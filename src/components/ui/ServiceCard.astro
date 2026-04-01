@@ -1,0 +1,79 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  emoji: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+  highlighted?: boolean;
+}
+
+const { emoji, title, description, imageUrl, imageAlt, highlighted = false } = Astro.props;
+---
+
+<Card 
+  class={`flex flex-col gap-5 overflow-hidden transition-transform hover:scale-[1.02] ${highlighted ? 'bg-[var(--color-accent)] text-white' : ''}`}
+  padding="p-0"
+>
+  <!-- Imagen -->
+  <div class="relative w-full h-40 overflow-hidden rounded-t-xl">
+    <img 
+      src={imageUrl} 
+      alt={imageAlt}
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+  </div>
+  
+  <!-- Contenido -->
+  <div class="px-7 pb-7 flex flex-col gap-5">
+    <!-- Emoji Badge -->
+    <div 
+      class={`inline-flex items-center justify-center w-12 h-12 rounded-lg text-2xl ${
+        highlighted 
+          ? 'bg-white/20' 
+          : 'bg-[var(--color-accent-bg)]'
+      }`}
+    >
+      {emoji}
+    </div>
+    
+    <!-- Título -->
+    <h3 
+      class={`text-xl font-bold ${
+        highlighted 
+          ? 'text-white' 
+          : 'text-[var(--color-text-primary)]'
+      }`}
+      style="font-family: var(--font-heading);"
+    >
+      {title}
+    </h3>
+    
+    <!-- Descripción -->
+    <p 
+      class={`text-sm leading-relaxed ${
+        highlighted 
+          ? 'text-white' 
+          : 'text-[var(--color-text-secondary)]'
+      }`}
+    >
+      {description}
+    </p>
+    
+    <!-- CTA -->
+    <a 
+      href="#contacto"
+      class={`text-sm font-semibold inline-flex items-center gap-1 group ${
+        highlighted 
+          ? 'text-white' 
+          : 'text-[var(--color-accent)]'
+      }`}
+    >
+      Ver más 
+      <span class="transition-transform group-hover:translate-x-1">→</span>
+    </a>
+  </div>
+</Card>

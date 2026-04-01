@@ -1,0 +1,40 @@
+---
+import Badge from './Badge.astro';
+
+interface Props {
+  title: string;
+  tag: string;
+  imageUrl: string;
+  imageAlt: string;
+}
+
+const { title, tag, imageUrl, imageAlt } = Astro.props;
+---
+
+<div class="rounded-xl bg-[var(--color-bg-card)] overflow-hidden transition-transform hover:scale-[1.02]">
+  <!-- Imagen -->
+  <div class="relative w-full h-56 overflow-hidden">
+    <img 
+      src={imageUrl} 
+      alt={imageAlt}
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+  </div>
+  
+  <!-- Contenido -->
+  <div class="p-6 flex flex-col gap-3">
+    <!-- Badge con tag -->
+    <Badge>
+      {tag}
+    </Badge>
+    
+    <!-- Título -->
+    <h3 
+      class="text-xl font-bold text-[var(--color-text-primary)]"
+      style="font-family: var(--font-heading);"
+    >
+      {title}
+    </h3>
+  </div>
+</div>

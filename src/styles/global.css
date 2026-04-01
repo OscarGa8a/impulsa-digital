@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@theme {
+  /* COLORES - Light Mode / Dark Mode */
+  --color-bg-primary: #ffffff;
+  --color-bg-primary-dark: #0c0c0c;
+  --color-bg-secondary: #f5f5f5;
+  --color-bg-secondary-dark: #111111;
+  --color-bg-card: #eeeeee;
+  --color-bg-card-dark: #1a1a1a;
+  --color-bg-footer: #f8f8f8;
+  --color-bg-footer-dark: #080808;
+  
+  --color-text-primary: #111111;
+  --color-text-primary-dark: #ffffff;
+  --color-text-secondary: #666666;
+  --color-text-secondary-dark: #8a8a8a;
+  --color-text-muted: #888888;
+  --color-text-muted-dark: #525252;
+  --color-text-tertiary: #aaaaaa;
+  --color-text-tertiary-dark: #3a3a3a;
+  --color-text-on-accent: #ffffff;
+  
+  --color-accent: #ff3b30;
+  --color-accent-hover: #e63329;
+  --color-accent-soft: rgba(255, 59, 48, 0.08);
+  --color-accent-soft-dark: rgba(255, 59, 48, 0.12);
+  --color-accent-bg: rgba(255, 59, 48, 0.05);
+  --color-accent-bg-dark: rgba(255, 59, 48, 0.20);
+  
+  --color-divider: #e0e0e0;
+  --color-divider-dark: #1a1a1a;
+  --color-accent-divider: rgba(255, 59, 48, 0.15);
+  --color-accent-divider-dark: rgba(255, 59, 48, 0.18);
+  
+  --color-avatar-green: #4caf50;
+  --color-avatar-blue: #2196f3;
+  --color-avatar-orange: #ff9800;
+  
+  --font-heading: "Sora", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --app-bg-primary: #ffffff;
+  --app-bg-secondary: #f5f5f5;
+  --app-bg-card: #eeeeee;
+  --app-bg-footer: #f8f8f8;
+  --app-text-primary: #111111;
+  --app-text-secondary: #666666;
+  --app-text-muted: #888888;
+  --app-text-tertiary: #aaaaaa;
+  --app-accent-soft: rgba(255, 59, 48, 0.08);
+  --app-accent-bg: rgba(255, 59, 48, 0.05);
+  --app-divider: #e0e0e0;
+  --app-accent-divider: rgba(255, 59, 48, 0.15);
+
+  --color-bg-primary: var(--app-bg-primary);
+  --color-bg-secondary: var(--app-bg-secondary);
+  --color-bg-card: var(--app-bg-card);
+  --color-bg-footer: var(--app-bg-footer);
+  --color-text-primary: var(--app-text-primary);
+  --color-text-secondary: var(--app-text-secondary);
+  --color-text-muted: var(--app-text-muted);
+  --color-text-tertiary: var(--app-text-tertiary);
+  --color-accent-soft: var(--app-accent-soft);
+  --color-accent-bg: var(--app-accent-bg);
+  --color-divider: var(--app-divider);
+  --color-accent-divider: var(--app-accent-divider);
+}
+
+html.dark {
+  --color-bg-primary: #0c0c0c;
+  --color-bg-secondary: #111111;
+  --color-bg-card: #1a1a1a;
+  --color-bg-footer: #080808;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #8a8a8a;
+  --color-text-muted: #525252;
+  --color-text-tertiary: #3a3a3a;
+  --color-accent-soft: rgba(255, 59, 48, 0.12);
+  --color-accent-bg: rgba(255, 59, 48, 0.20);
+  --color-divider: #1a1a1a;
+  --color-accent-divider: rgba(255, 59, 48, 0.18);
+}
+
+/* === FUENTES === */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
+
+/* === BASE STYLES (compatible con Tailwind Preflight) === */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === UTILIDADES === */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+  }
+}
+
+/* === ANIMACIONES SMOOTH === */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-property: background-color, color, border-color, fill;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+}

@@ -1,0 +1,39 @@
+---
+import Badge from '../ui/Badge.astro';
+import ServiceCard from '../ui/ServiceCard.astro';
+import { services } from '../../data/services';
+---
+
+<section id="servicios" class="py-20 lg:py-24">
+  <div class="container">
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-4 mb-12 text-center">
+      <Badge>
+        Servicios
+      </Badge>
+      <h2 
+        class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)]"
+        style="font-family: var(--font-heading);"
+      >
+        Soluciones que impulsan tu negocio
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl">
+        Desde tu página web hasta estrategias de publicidad automatizada. Todo lo que necesitás para crecer online.
+      </p>
+    </div>
+    
+    <!-- Grid de ServiceCards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map(service => (
+        <ServiceCard
+          emoji={service.emoji}
+          title={service.title}
+          description={service.description}
+          imageUrl={service.imageUrl}
+          imageAlt={service.imageAlt}
+          highlighted={service.highlighted}
+        />
+      ))}
+    </div>
+  </div>
+</section>

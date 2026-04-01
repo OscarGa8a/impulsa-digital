@@ -1,0 +1,27 @@
+---
+import { getWhatsAppLink } from '../../data/constants';
+---
+
+<a
+  href={getWhatsAppLink()}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+  class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95"
+  style="background-color: #25D366;"
+>
+  <!-- Ícono de message-circle (lucide) -->
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="28" 
+    height="28" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="white" 
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  >
+    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+  </svg>
+</a>
