@@ -1,0 +1,37 @@
+---
+import Badge from '../ui/Badge.astro';
+import PortfolioCard from '../ui/PortfolioCard.astro';
+import { portfolio } from '../../data/portfolio';
+---
+
+<section id="portafolio" class="py-20 lg:py-24">
+  <div class="container">
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-4 mb-12 text-center">
+      <Badge>
+        Portafolio
+      </Badge>
+      <h2 
+        class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)]"
+        style="font-family: var(--font-heading);"
+      >
+        Proyectos que hicimos realidad
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl">
+        Empresas que confiaron en nosotros y hoy cosechan los resultados.
+      </p>
+    </div>
+    
+    <!-- Grid de PortfolioCards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {portfolio.map(item => (
+        <PortfolioCard
+          title={item.title}
+          tag={item.tag}
+          imageUrl={item.imageUrl}
+          imageAlt={item.imageAlt}
+        />
+      ))}
+    </div>
+  </div>
+</section>

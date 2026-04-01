@@ -1,0 +1,84 @@
+---
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import { getWhatsAppLink } from '../../data/constants';
+---
+
+<section class="py-20 lg:py-24">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- Columna de Texto -->
+      <div class="flex flex-col gap-8">
+        <!-- Badge -->
+        <Badge>
+          Tu negocio, amplificado
+        </Badge>
+        
+        <!-- H1 -->
+        <h1 
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-text-primary)] leading-tight"
+          style="font-family: var(--font-heading);"
+        >
+          Hacemos que tu negocio <span class="text-[var(--color-accent)]">crezca</span> en digital
+        </h1>
+        
+        <!-- Subtítulo -->
+        <p class="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
+          Diseño web, marketing digital, publicidad online y bots inteligentes. Todo en un solo lugar, sin complicaciones.
+        </p>
+        
+        <!-- Botones -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href={getWhatsAppLink()} size="lg" variant="primary">
+            Hablemos por WhatsApp
+          </Button>
+          <Button href="#servicios" size="lg" variant="secondary">
+            Ver servicios
+          </Button>
+        </div>
+        
+        <!-- Trust Row -->
+        <div class="flex flex-col gap-3 pt-4">
+          <p class="text-sm text-[var(--color-text-secondary)]">
+            Empresas que confiaron en nosotros:
+          </p>
+          <div class="flex items-center gap-6 flex-wrap">
+            <div class="px-6 py-3 rounded-lg bg-[var(--color-bg-card)] text-sm font-semibold text-[var(--color-text-secondary)]">
+              Restaurante El Sabor
+            </div>
+            <div class="px-6 py-3 rounded-lg bg-[var(--color-bg-card)] text-sm font-semibold text-[var(--color-text-secondary)]">
+              Centro Bella
+            </div>
+            <div class="px-6 py-3 rounded-lg bg-[var(--color-bg-card)] text-sm font-semibold text-[var(--color-text-secondary)]">
+              ModaX
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Columna de Imagen -->
+      <div class="relative">
+        <div class="relative rounded-xl overflow-hidden shadow-lg">
+          <img 
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200"
+            alt="Dashboard de métricas y análisis digital"
+            class="w-full h-auto object-cover"
+            loading="eager"
+          />
+          <!-- Overlay sutil -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+        
+        <!-- Badge flotante (opcional) -->
+        <div class="absolute -bottom-6 -right-6 hidden lg:block">
+          <div class="px-6 py-4 rounded-xl bg-[var(--color-accent)] text-white shadow-lg">
+            <div class="text-3xl font-bold" style="font-family: var(--font-heading);">+50</div>
+            <div class="text-sm">Proyectos exitosos</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

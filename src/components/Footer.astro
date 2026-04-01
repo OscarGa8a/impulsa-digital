@@ -1,0 +1,155 @@
+---
+import { SITE_CONFIG, getWhatsAppLink } from '../data/constants';
+
+const currentYear = new Date().getFullYear();
+
+const serviceLinks = [
+  { href: '#servicios', label: 'Páginas Web' },
+  { href: '#servicios', label: 'Marketing Digital' },
+  { href: '#servicios', label: 'Publicidad Online' },
+  { href: '#servicios', label: 'Bots & Automatización' },
+];
+
+const legalLinks = [
+  { href: '#', label: 'Términos' },
+  { href: '#', label: 'Privacidad' },
+];
+---
+
+<footer class="bg-[var(--color-bg-footer)] border-t border-[var(--color-divider)] py-16">
+  <div class="container">
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+      
+      <!-- Columna 1: Logo, Tagline, Redes Sociales -->
+      <div class="flex flex-col gap-6">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity w-fit">
+          <div class="w-9 h-9 rounded-md bg-[var(--color-accent)] flex items-center justify-center text-white font-bold text-xl" style="font-family: var(--font-heading);">
+            I
+          </div>
+          <span class="text-xl font-bold text-[var(--color-text-primary)]" style="font-family: var(--font-heading);">
+            IMPULSA Digital
+          </span>
+        </a>
+        
+        <!-- Tagline -->
+        <p class="text-sm text-[var(--color-text-secondary)] max-w-xs">
+          {SITE_CONFIG.tagline}
+          <br />
+          Transformamos tu negocio con soluciones digitales reales.
+        </p>
+        
+        <!-- Redes Sociales -->
+        <div class="flex items-center gap-3">
+          <a 
+            href={SITE_CONFIG.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            class="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--color-bg-card)] hover:bg-[var(--color-bg-secondary)] transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a 
+            href={SITE_CONFIG.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--color-bg-card)] hover:bg-[var(--color-bg-secondary)] transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+          </a>
+          <a 
+            href={SITE_CONFIG.social.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            class="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--color-bg-card)] hover:bg-[var(--color-bg-secondary)] transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Columna 2: Links de Servicios -->
+      <div class="flex flex-col gap-6">
+        <h3 class="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wide" style="font-family: var(--font-heading);">
+          Servicios
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {serviceLinks.map(link => (
+            <li>
+              <a 
+                href={link.href}
+                class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Columna 3: Contacto -->
+      <div class="flex flex-col gap-6">
+        <h3 class="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wide" style="font-family: var(--font-heading);">
+          Contacto
+        </h3>
+        <ul class="flex flex-col gap-4">
+          <li class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-accent)] flex-shrink-0 mt-0.5">
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+            </svg>
+            <a 
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              {SITE_CONFIG.whatsapp.number}
+            </a>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-accent)] flex-shrink-0 mt-0.5">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <a 
+              href={`mailto:${SITE_CONFIG.email}`}
+              class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              {SITE_CONFIG.email}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-[var(--color-divider)] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-[var(--color-text-secondary)] text-center sm:text-left">
+        © {currentYear} {SITE_CONFIG.name}. Todos los derechos reservados.
+      </p>
+      
+      <div class="flex items-center gap-6">
+        {legalLinks.map(link => (
+          <a 
+            href={link.href}
+            class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

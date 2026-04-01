@@ -1,0 +1,73 @@
+---
+import Badge from '../ui/Badge.astro';
+import ProcessStep from '../ui/ProcessStep.astro';
+import { processSteps } from '../../data/process';
+---
+
+<section id="proceso" class="py-20 lg:py-24 bg-[var(--color-bg-secondary)]">
+  <div class="container">
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-4 mb-12 text-center">
+      <Badge>
+        Proceso
+      </Badge>
+      <h2 
+        class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)]"
+        style="font-family: var(--font-heading);"
+      >
+        Cómo trabajamos
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl">
+        Un proceso simple, transparente y enfocado en resultados. Sin vueltas.
+      </p>
+    </div>
+    
+    <!-- Desktop: Horizontal con flechas -->
+    <div class="hidden lg:flex lg:items-center lg:gap-6">
+      {processSteps.map((step, index) => (
+        <>
+          <div class="flex-1">
+            <ProcessStep
+              number={step.number}
+              icon={step.icon}
+              title={step.title}
+              description={step.description}
+              highlighted={step.highlighted}
+            />
+          </div>
+          {index < processSteps.length - 1 && (
+            <div class="flex-shrink-0 text-3xl text-[var(--color-text-muted)]">
+              →
+            </div>
+          )}
+        </>
+      ))}
+    </div>
+    
+    <!-- Tablet: Grid 2x2 (sin flechas) -->
+    <div class="hidden md:grid lg:hidden md:grid-cols-2 gap-6">
+      {processSteps.map(step => (
+        <ProcessStep
+          number={step.number}
+          icon={step.icon}
+          title={step.title}
+          description={step.description}
+          highlighted={step.highlighted}
+        />
+      ))}
+    </div>
+    
+    <!-- Mobile: Stack (sin flechas) -->
+    <div class="grid md:hidden grid-cols-1 gap-6">
+      {processSteps.map(step => (
+        <ProcessStep
+          number={step.number}
+          icon={step.icon}
+          title={step.title}
+          description={step.description}
+          highlighted={step.highlighted}
+        />
+      ))}
+    </div>
+  </div>
+</section>

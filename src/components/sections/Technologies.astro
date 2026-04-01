@@ -1,0 +1,30 @@
+---
+import Badge from '../ui/Badge.astro';
+import { technologies } from '../../data/technologies';
+---
+
+<section class="py-20 lg:py-24 bg-[var(--color-bg-secondary)]">
+  <div class="container">
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-4 mb-12 text-center">
+      <Badge>
+        Tecnologías
+      </Badge>
+      <h2 
+        class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)]"
+        style="font-family: var(--font-heading);"
+      >
+        Las herramientas que usamos
+      </h2>
+    </div>
+    
+    <!-- Grid de Badges -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      {technologies.map(tech => (
+        <div class="flex items-center justify-center px-6 py-4 rounded-lg bg-[var(--color-bg-card)] text-sm font-semibold text-[var(--color-text-primary)] hover:scale-105 transition-transform">
+          {tech.name}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

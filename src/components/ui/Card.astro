@@ -1,0 +1,15 @@
+---
+interface Props {
+  class?: string;
+  padding?: string;
+}
+
+const { 
+  class: className,
+  padding = 'p-6 md:p-7',
+} = Astro.props;
+---
+
+<div class={`rounded-xl bg-[var(--color-bg-card)] ${padding} ${className || ''}`}>
+  <slot />
+</div>
