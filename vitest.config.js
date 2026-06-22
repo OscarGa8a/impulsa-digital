@@ -1,5 +1,5 @@
 export default {
   test: {
-    include: ['tests/**/*.test.js'],
+    include: ["tests/**/*.test.js"],
   },
 };
