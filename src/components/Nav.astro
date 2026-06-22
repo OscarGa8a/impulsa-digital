@@ -29,11 +29,6 @@ const enPath = '/en/';
         <a href={esPath} class={`inline-flex items-center justify-center px-3 py-2 rounded-full text-ink-dim no-underline font-mono text-[11px] tracking-[0.1em] min-w-[40px] min-h-[32px] ${lang === 'es' ? 'active bg-ink text-bg' : ''}`} aria-label={lang === 'es' ? 'Español (actual)' : 'Español'}>ES</a>
         <a href={enPath} class={`inline-flex items-center justify-center px-3 py-2 rounded-full text-ink-dim no-underline font-mono text-[11px] tracking-[0.1em] min-w-[40px] min-h-[32px] ${lang === 'en' ? 'active bg-ink text-bg' : ''}`} aria-label={lang === 'en' ? 'English (current)' : 'English'}>EN</a>
       </div>
-      <div class="accent-toggle" role="group" aria-label="Accent color">
-        <button class="accent-swatch active" data-accent="lime" aria-label="Lime accent"></button>
-        <button class="accent-swatch" data-accent="cyan" aria-label="Cyan accent"></button>
-        <button class="accent-swatch" data-accent="magenta" aria-label="Magenta accent"></button>
-      </div>
       <button class="tw-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="5"/>

@@ -30,15 +30,6 @@ test.describe("Theme toggle", () => {
 	});
 });
 
-test.describe("Accent toggle", () => {
-	test("switches accent colors", async ({ page }) => {
-		await page.goto("/");
-		const cyanBtn = page.locator('.accent-swatch[data-accent="cyan"]');
-		await cyanBtn.click();
-		await expect(page.locator("html")).toHaveAttribute("data-accent", "cyan");
-	});
-});
-
 test.describe("Portfolio filter", () => {
 	test("filters by category", async ({ page }) => {
 		await page.goto("/");

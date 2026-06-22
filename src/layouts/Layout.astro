@@ -29,10 +29,8 @@ const canonicalUrl = canonical ? `${site}${canonical}` : `${site}${Astro.url.pat
 			(function() {
 				try {
 					const theme = localStorage.getItem('id_theme') || 'dark';
-					const accent = localStorage.getItem('id_accent') || 'lime';
 					const html = document.documentElement;
 					if (theme === 'light') html.classList.add('light');
-					html.setAttribute('data-accent', accent);
 				} catch (e) {}
 			})();
 		</script>
@@ -84,18 +82,6 @@ const canonicalUrl = canonical ? `${site}${canonical}` : `${site}${Astro.url.pat
 					if (toggleBtn) toggleBtn.setAttribute('aria-pressed', String(isLight));
 				}
 
-				function updateAccentUI(accent) {
-					document.querySelectorAll('.accent-swatch[data-accent]').forEach(function(button) {
-						button.classList.toggle('active', button.getAttribute('data-accent') === accent);
-					});
-				}
-
-				function setAccent(accent) {
-					html.setAttribute('data-accent', accent);
-					setStored('id_accent', accent);
-					updateAccentUI(accent);
-				}
-
 				function toggleTheme() {
 					const isLight = html.classList.toggle('light');
 					setStored('id_theme', isLight ? 'light' : 'dark');
@@ -104,18 +90,13 @@ const canonicalUrl = canonical ? `${site}${canonical}` : `${site}${Astro.url.pat
 
 				function init() {
 					const theme = getStored('id_theme', 'dark');
-					const accent = getStored('id_accent', 'lime');
 					if (theme === 'light') html.classList.add('light');
 					else html.classList.remove('light');
-					setAccent(accent);
 					updateThemeUI();
 				}
 
 				// Bind events
 				document.addEventListener('click', function(e) {
-				const accentTarget = e.target.closest('.accent-swatch[data-accent]');
-				if (accentTarget) setAccent(accentTarget.getAttribute('data-accent'));
-
 				const target = e.target.closest('#theme-toggle');
 					if (target) toggleTheme();
 				});
