@@ -1,0 +1,84 @@
+---
+import { type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  t: LocaleContent;
+}
+
+const { t } = Astro.props;
+
+const icons: Record<string, string> = {
+  cup: `<svg viewBox="0 0 80 80" fill="none"><path d="M20 28h36v22a14 14 0 0 1-14 14h-8a14 14 0 0 1-14-14V28z" stroke="currentColor" stroke-width="1.5"/><path d="M56 34h6a6 6 0 0 1 0 12h-6" stroke="currentColor" stroke-width="1.5"/><path d="M28 14c0 4 4 4 4 8s-4 4-4 8M40 14c0 4 4 4 4 8s-4 4-4 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  grid: `<svg viewBox="0 0 80 80" fill="none"><rect x="14" y="14" width="22" height="22" stroke="currentColor" stroke-width="1.5"/><rect x="44" y="14" width="22" height="22" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="44" width="22" height="22" stroke="currentColor" stroke-width="1.5"/><circle cx="55" cy="55" r="11" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  cross: `<svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="26" stroke="currentColor" stroke-width="1.5"/><path d="M40 28v24M28 40h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  leaf: `<svg viewBox="0 0 80 80" fill="none"><path d="M18 62C18 36 34 20 60 18c2 26-14 42-40 44z" stroke="currentColor" stroke-width="1.5"/><path d="M22 58 56 24" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  tri: `<svg viewBox="0 0 80 80" fill="none"><path d="M40 16 66 60H14L40 16z" stroke="currentColor" stroke-width="1.5"/><path d="M28 60 40 36 52 60" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  sun: `<svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="10" x2="40" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="40" y1="62" x2="40" y2="70" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="10" y1="40" x2="18" y2="40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="62" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="18.8" y1="18.8" x2="24.5" y2="24.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="55.5" y1="55.5" x2="61.2" y2="61.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="18.8" y1="61.2" x2="24.5" y2="55.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="55.5" y1="24.5" x2="61.2" y2="18.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+};
+---
+
+<section id="work" data-screen-label="portfolio">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> {t.portfolio.eyebrow}</span>
+      </div>
+      <div>
+        <h2>{t.portfolio.title} <i>{t.portfolio.titleI}</i>{t.portfolio.titleEnd}</h2>
+        <p style="margin-top:18px">{t.portfolio.desc}</p>
+      </div>
+    </div>
+    <div class="portfolio-filters">
+      {t.portfolio.filters.map((f, i) => (
+        <button class={`pf-btn ${i === 0 ? 'active' : ''}`} data-filter={f} aria-pressed={i === 0 ? 'true' : 'false'}>
+          {f}
+        </button>
+      ))}
+    </div>
+    <div class="pf-mosaic">
+      {t.portfolio.items.map((p, i) => (
+        <article class="project" data-category={p.tag} data-active="true" key={i}>
+          <div class="thumb">
+            <div class={`ph ${p.ph}`} set:html={icons[p.icon] || ''}></div>
+          </div>
+          <div class="meta">
+            <div>
+              <div class="t">{p.t}</div>
+              <div class="c">{p.c}</div>
+            </div>
+            <div class="yr">{p.yr}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function() {
+    const container = document.getElementById('work');
+    if (!container) return;
+    const buttons = container.querySelectorAll('.pf-btn');
+    const projects = container.querySelectorAll('.project');
+    const defaultFilter = buttons[0]?.dataset.filter || 'All';
+
+    function filterBy(category) {
+      projects.forEach(p => {
+        const cat = p.dataset.category || '';
+        const active = category === defaultFilter || cat === category;
+        p.setAttribute('data-active', String(active));
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.dataset.filter;
+        buttons.forEach(b => {
+          b.classList.toggle('active', b === this);
+          b.setAttribute('aria-pressed', String(b === this));
+        });
+        filterBy(filter);
+      });
+    });
+  })();
+</script>

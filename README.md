@@ -1,6 +1,7 @@
 # Impulsa Digital
 
-Astro marketing site. This project uses **pnpm** as its package manager.
+Astro + Tailwind CSS marketing site. This project uses **pnpm** as its package
+manager.
 
 ## Project Structure
 
@@ -8,10 +9,12 @@ Astro marketing site. This project uses **pnpm** as its package manager.
 /
 ├── public/
 ├── src/
-│   ├── assets/
 │   ├── components/
+│   ├── data/
 │   ├── layouts/
-│   └── pages/
+│   ├── pages/
+│   │   └── en/
+│   └── styles/
 ├── astro.config.mjs
 ├── package.json
 ├── pnpm-lock.yaml

@@ -1,0 +1,59 @@
+---
+import { type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  t: LocaleContent;
+}
+
+const { t } = Astro.props;
+---
+
+<header class="hero" data-screen-label="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <span class="eyebrow"><span class="dot"></span> {t.hero.eyebrow}</span>
+        <h1 class="display">
+          <span class="row">{t.hero.h1a}</span>
+          <span class="row">{t.hero.h1b} <i>{t.hero.h1c}.</i></span>
+          <span class="row">{t.hero.h1d} <i>{t.hero.h1e}.</i></span>
+        </h1>
+        <p class="hero-sub">{t.hero.sub}</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            {t.cta.start}
+            <svg class="arrow arrow-svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#work" class="btn btn-ghost">
+            {t.cta.see}
+            <svg class="arrow arrow-svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <aside class="hero-aside fade-up" style="animation-delay:120ms">
+        <div class="fake-window">
+          <div class="fw-bar"><span></span><span></span><span></span></div>
+          <div class="font-mono text-[11px] text-ink-faint tracking-[0.1em]">{t.hero.codeTitle}</div>
+          <div class="code-card mt-[10px]">
+            {t.hero.codeLines.map((line, i) => (
+              <div>
+                {line.map((p, j) => (
+                  <span class={p[1] || ""}>{p[0]}</span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="hero-meta mt-auto">
+          {t.hero.stats.map((s, i) => (
+            <div class="stat" key={i}>
+              <div class="num">{s.n}</div>
+              <div class="lbl">{s.l}</div>
+            </div>
+          ))}
+        </div>
+        <div class="orbit" aria-hidden="true"></div>
+      </aside>
+    </div>
+  </div>
+</header>

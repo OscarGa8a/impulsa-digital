@@ -1,0 +1,36 @@
+---
+import { type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  t: LocaleContent;
+}
+
+const { t } = Astro.props;
+---
+
+<section data-screen-label="testimonials">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> {t.quotes.eyebrow}</span>
+      </div>
+      <div>
+        <h2>{t.quotes.title} <i>{t.quotes.titleI}</i>{t.quotes.titleEnd}</h2>
+      </div>
+    </div>
+    <div class="quotes">
+      {t.quotes.items.map((q, i) => (
+        <div class="quote" key={i}>
+          <div class="q">{q.q}</div>
+          <div class="author">
+            <div class="avatar">{q.a}</div>
+            <div>
+              <div class="name">{q.n}</div>
+              <div class="role">{q.r}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

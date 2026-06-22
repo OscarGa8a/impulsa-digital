@@ -1,0 +1,48 @@
+---
+import { content, type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  lang: 'es' | 'en';
+  t: LocaleContent;
+}
+
+const { lang, t } = Astro.props;
+const esPath = '/';
+const enPath = '/en/';
+---
+
+<nav class="nav" id="top">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="Impulsa Digital">
+      <span class="logo-mark"></span>
+      <span>Impulsa Digital</span>
+    </a>
+    <ul>
+      <li><a href="#services">{t.nav.services}</a></li>
+      <li><a href="#work">{t.nav.work}</a></li>
+      <li><a href="#process">{t.nav.process}</a></li>
+      <li><a href="#pricing">{t.nav.pricing}</a></li>
+      <li><a href="#about">{t.nav.about}</a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <a href={esPath} class={`inline-flex items-center justify-center px-3 py-2 rounded-full text-ink-dim no-underline font-mono text-[11px] tracking-[0.1em] min-w-[40px] min-h-[32px] ${lang === 'es' ? 'active bg-ink text-bg' : ''}`} aria-label={lang === 'es' ? 'Español (actual)' : 'Español'}>ES</a>
+        <a href={enPath} class={`inline-flex items-center justify-center px-3 py-2 rounded-full text-ink-dim no-underline font-mono text-[11px] tracking-[0.1em] min-w-[40px] min-h-[32px] ${lang === 'en' ? 'active bg-ink text-bg' : ''}`} aria-label={lang === 'en' ? 'English (current)' : 'English'}>EN</a>
+      </div>
+      <div class="accent-toggle" role="group" aria-label="Accent color">
+        <button class="accent-swatch active" data-accent="lime" aria-label="Lime accent"></button>
+        <button class="accent-swatch" data-accent="cyan" aria-label="Cyan accent"></button>
+        <button class="accent-swatch" data-accent="magenta" aria-label="Magenta accent"></button>
+      </div>
+      <button class="tw-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+      <a href="#contact" class="btn btn-primary">{t.cta.start}<svg class="arrow arrow-svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+

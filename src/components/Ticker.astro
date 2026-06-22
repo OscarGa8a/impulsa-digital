@@ -1,0 +1,16 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+const doubled = [...items, ...items];
+---
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {doubled.map((it, i) => (
+      <span>{it}<span class="sep">✦</span></span>
+    ))}
+  </div>
+</div>

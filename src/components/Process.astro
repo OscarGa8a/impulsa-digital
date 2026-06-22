@@ -1,0 +1,33 @@
+---
+import { type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  t: LocaleContent;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="process" data-screen-label="process">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> {t.process.eyebrow}</span>
+      </div>
+      <div>
+        <h2>{t.process.title} <i>{t.process.titleI}</i>{t.process.titleEnd}</h2>
+        <p style="margin-top:18px">{t.process.desc}</p>
+      </div>
+    </div>
+    <div class="process">
+      {t.process.steps.map((s, i) => (
+        <div class="step" key={i}>
+          <div class="k">{s.k}</div>
+          <h3>{s.t}</h3>
+          <p>{s.d}</p>
+          <div class="dur">{s.dur}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
