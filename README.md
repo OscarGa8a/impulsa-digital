@@ -15,6 +15,8 @@ manager.
 │   ├── pages/
 │   │   └── en/
 │   └── styles/
+├── tests/
+│   └── e2e/
 ├── astro.config.mjs
 ├── package.json
 ├── pnpm-lock.yaml
@@ -31,5 +33,7 @@ All commands are run from the root of the project.
 | `pnpm dev`             | Starts the local dev server             |
 | `pnpm build`           | Builds the production site to `./dist/` |
 | `pnpm preview`         | Previews the production build locally   |
+| `pnpm test -- --run`   | Runs unit/content tests once            |
+| `pnpm test:e2e`        | Runs Playwright E2E tests               |
 | `pnpm astro ...`       | Runs Astro CLI commands                 |
 | `pnpm astro -- --help` | Shows Astro CLI help                    |
