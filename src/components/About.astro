@@ -1,0 +1,26 @@
+---
+import { type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  t: LocaleContent;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="about" data-screen-label="about">
+  <div class="container">
+    <div class="about">
+      <div class="about-card" aria-hidden="true">
+        <div class="ph">[ portrait · team photo ]</div>
+      </div>
+      <div>
+        <span class="eyebrow"><span class="dot"></span> {t.about.eyebrow}</span>
+        <h3>{t.about.title} <i class="text-accent italic">{t.about.titleI}</i>{t.about.titleEnd}</h3>
+        <p>{t.about.desc}</p>
+        <p style="margin-top:18px">{t.about.body}</p>
+        <div class="signature">{t.about.signature}</div>
+      </div>
+    </div>
+  </div>
+</section>

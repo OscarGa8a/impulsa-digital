@@ -1,0 +1,36 @@
+---
+import { type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  t: LocaleContent;
+}
+
+const { t } = Astro.props;
+---
+
+<footer>
+  <div class="container">
+    <div class="f-grid">
+      <div class="f-col">
+        <a href="#top" class="logo" aria-label="Impulsa Digital">
+          <span class="logo-mark"></span>
+          <span>Impulsa Digital</span>
+        </a>
+        <div class="f-big mt-6">{t.footer.bigline}</div>
+        <div class="text-ink-dim text-sm max-w-[320px]">{t.footer.loc}</div>
+      </div>
+      {t.footer.cols.map((c, i) => (
+        <div class="f-col" key={i}>
+          <h3>{c.h}</h3>
+          {c.items.map((it, j) => <a href="#" key={j}>{it}</a>)}
+        </div>
+      ))}
+    </div>
+    <div class="f-bottom">
+      <div>{t.footer.rights}</div>
+      <div>v1.0 · 2026</div>
+    </div>
+  </div>
+</footer>
+
+

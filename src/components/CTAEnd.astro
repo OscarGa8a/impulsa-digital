@@ -1,0 +1,28 @@
+---
+import { type LocaleContent } from '../data/content.ts';
+
+interface Props {
+  t: LocaleContent;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="contact" data-screen-label="contact">
+  <div class="container">
+    <div class="cta">
+      <h2>{t.ctaEnd.title1} <i>{t.ctaEnd.titleI}</i></h2>
+      <p>{t.ctaEnd.sub}</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary">
+          {t.ctaEnd.primary}
+          <svg class="arrow arrow-svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn btn-ghost">
+          {t.ctaEnd.secondary}
+          <svg class="arrow arrow-svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
